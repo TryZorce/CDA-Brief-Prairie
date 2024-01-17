@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les rendez-vous{% endblock %}
+
+{% block body %}
+    <h1>Liste des rendez-vous</h1>
+
+    <ul>
+        {% for meeting in meetings %}
+            <li>{{ meeting.date }} - {{ meeting.description }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

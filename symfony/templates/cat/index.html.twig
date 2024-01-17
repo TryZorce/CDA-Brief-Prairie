@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les chats
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/cat.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="my-4">Liste des chats</h1>
+        <a class="cat-btn" href="accueil"> Revenir a l'accueil</a>
+
+		<ul class="cat-list">
+			{% for cat in cats %}
+				<li class="cat-item">
+					<p>{{ cat.getName() }}</p>
+					<ul class="cat-details">
+                    <div class="cat-img-wrapper"> 
+						<li><img src="{{ cat.getImage() }}" class="cat-image"></li>
+                    </div>
+						<li>Sexe:
+							{{ cat.getSex() }}</li>
+						<li>Date de naissance:
+							{{ cat.getBirth()|date('Y-m-d') }}</li>
+						<li>Race:
+							{{ cat.getRace() }}</li>
+						<div class="cat-btn-wrapper">
+							<a href="pet/{{ cat.getId() }}" class="cat-btn">
+								Accèder a son espace</a>
+							</div>
+						</ul>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+        <div class="add-cat-btn-wrapper">
+        <a class="add-cat-btn" href="add-cat"> Ajouter un chat</a>
+        </div>
+	{% endblock %}

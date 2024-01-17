@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les chats{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/cat.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <div class="header-wrapper-flex">
+        <div class="header-wrapper">
+            <h1>Liste des chats</h1>
+            <a class="btn" href="accueil">Revenir à l'accueil</a>
+            <a class="btn" href="add-cat">Ajouter un chat</a>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <label for="cat-search">Rechercher par nom :</label>
+        <input type="text" id="cat-search" oninput="filterCats()">
+    </div>
+
+    <div class="cat-wrapper">
+        <table class="cat-table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Image</th>
+                    <th>Sexe</th>
+                    <th>Date de naissance</th>
+                    <th>Race</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in cats %}
+                    <tr class="cat-row">
+                        <td class="cat-name">{{ cat.getName() }}</td>
+                        <td>
+                            <div class="cat-img-wrapper">
+                                <img src="{{ cat.getImage() }}" class="cat-image">
+                            </div>
+                        </td>
+                        <td>{{ cat.getSex() }}</td>
+                        <td>{{ cat.getBirth()|date('Y-m-d') }}</td>
+                        <td>{{ cat.getRace() }}</td>
+                        <td>
+                            <div class="cat-btn-wrapper">
+                                <a href="pet/{{ cat.getId() }}" class="cat-btn">
+                                    Accéder à son espace
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% block javascripts %}
+        <script>
+            function filterCats() {
+                var input = document.getElementById('cat-search').value.toLowerCase();
+                var rows = document.getElementsByClassName('cat-row');
+
+                for (var i = 0; i < rows.length; i++) {
+                    var catName = rows[i].getElementsByClassName('cat-name')[0].innerText.toLowerCase();
+                    
+                    if (catName.includes(input)) {
+                        rows[i].style.display = '';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    {% endblock %}
+{% endblock %}

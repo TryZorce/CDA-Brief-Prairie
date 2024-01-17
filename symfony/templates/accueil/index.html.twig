@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Application Vétérinaire
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<img src="img/logo.png">
+		<h1>Bienvenue dans l'Application Vétérinaire</h1>
+		<p>Gérez vos clients, leurs chats et les rendez-vous en toute simplicité.</p>
+
+		<a href="{{ path('app_customer') }}" class="button">Gérer les clients</a>
+		<a href="{{ path('app_cat') }}" class="button">Gérer les chats</a>
+		<a href="{{ path('app_meet') }}" class="button">Gérer les rendez-vous</a>
+	</div>
+{% endblock %}

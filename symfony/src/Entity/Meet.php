@@ -23,6 +23,9 @@ class Meet
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $Date = null;
 
+    #[ORM\ManyToOne(inversedBy: 'meets')]
+    private ?Pet $Pet = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Meet
     public function setDate(\DateTimeInterface $Date): static
     {
         $this->Date = $Date;
+
+        return $this;
+    }
+
+    public function getPet(): ?Pet
+    {
+        return $this->Pet;
+    }
+
+    public function setPet(?Pet $Pet): static
+    {
+        $this->Pet = $Pet;
 
         return $this;
     }

@@ -1,14 +1,23 @@
-.header-wrapper-flex{
+.header-wrapper-flex {
     display: flex;
     justify-content: center;
 }
+
 .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     width: 80%;
+
+    margin-left: 150px;
 }
+
+.logo {
+    width: 150px;
+    position: absolute;
+}
+
 .btn {
     font-size: 24px;
     width: 150px;
@@ -19,6 +28,16 @@
     border-radius: 5px;
     display: inline-block;
     text-align: center;
+}
+
+.search-bar {
+    font-size: 18px;
+    margin-left: 100px;
+}
+
+.cat-search-input {
+    width: 250px;
+    height: 25px;
 }
 
 .wrapper {
@@ -33,7 +52,8 @@
     margin-top: 20px;
 }
 
-.customer-table th, .customer-table td {
+.customer-table th,
+.customer-table td {
     border: 1px solid black;
     padding: 8px;
     text-align: center;

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PetRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,17 @@ class Pet
 
     #[ORM\Column(length: 255)]
     private ?string $Race = null;
+
+    #[ORM\ManyToOne(inversedBy: 'pets')]
+    private ?Customer $Customer = null;
+
+    #[ORM\OneToMany(mappedBy: 'Pet', targetEntity: Meet::class)]
+    private Collection $meets;
+
+    public function __construct()
+    {
+        $this->meets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +103,48 @@ class Pet
     public function setRace(string $Race): static
     {
         $this->Race = $Race;
+
+        return $this;
+    }
+
+    public function getCustomer(): ?Customer
+    {
+        return $this->Customer;
+    }
+
+    public function setCustomer(?Customer $Customer): static
+    {
+        $this->Customer = $Customer;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Meet>
+     */
+    public function getMeets(): Collection
+    {
+        return $this->meets;
+    }
+
+    public function addMeet(Meet $meet): static
+    {
+        if (!$this->meets->contains($meet)) {
+            $this->meets->add($meet);
+            $meet->setPet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMeet(Meet $meet): static
+    {
+        if ($this->meets->removeElement($meet)) {
+            // set the owning side to null (unless already changed)
+            if ($meet->getPet() === $this) {
+                $meet->setPet(null);
+            }
+        }
 
         return $this;
     }

@@ -8,8 +8,23 @@
     align-items: center;
     margin-bottom: 20px;
     width: 80%;
+    margin-left: 150px;
 }
 
+.logo {
+    width: 150px;
+    position: absolute;
+}
+
+.search-bar{
+    font-size: 18px;
+    margin-left: 100px;
+}
+
+.cat-search-input{
+    width: 250px;
+    height: 25px;
+}
 .cat-wrapper {
     display: flex;
     flex-direction: column;

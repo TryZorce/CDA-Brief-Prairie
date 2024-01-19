@@ -45,7 +45,13 @@
 							</div>
 						</td>
 						<td>
-							cat.getIdCustomer()}}</td>
+							{% if cat.getCustomer() is not null %}
+								{{ cat.getCustomer().getName() }}
+							{% else %}
+								Aucun propriétaire
+							{% endif %}
+						</td>
+
 						<td>{{ cat.getSex() }}</td>
 						<td>{{ cat.getBirth()|date('Y-m-d') }}</td>
 						<td>{{ cat.getRace() }}</td>

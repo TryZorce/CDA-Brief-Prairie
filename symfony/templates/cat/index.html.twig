@@ -1,5 +1,3 @@
-{# templates/cat/index.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Gérer les chats{% endblock %}
@@ -9,6 +7,13 @@
 {% endblock %}
 
 {% block body %}
+    {# Display flash messages #}
+    {% for flashMessage in app.flashes('error') %}
+        <script>
+            alert('{{ flashMessage }}');
+        </script>
+    {% endfor %}
+
     <img src="img/logo.png" class="logo">
     <div class="header-wrapper-flex">
         <div class="header-wrapper">
@@ -54,7 +59,7 @@
                                 <a href="{{ path('app_edit_cat', {'id': cat.getId()}) }}" class="cat-btn">Modifier</a>
                             </div>
                             <div class="cat-btn-wrapper">
-                                <a href="{{ path('app_delete_cat', {'id': cat.getId()}) }}" class="cat-btn-delete" onclick="return confirmDelete('{{ cat.getName() }}')">Supprimer</a>
+                                <a href="#" class="cat-btn-delete" onclick="confirmDelete('{{ cat.getName() }}', '{{ path('app_delete_cat', {'id': cat.getId()}) }}')">Supprimer</a>
                             </div>
                         </td>
                     </tr>
@@ -80,8 +85,10 @@
                 }
             }
 
-            function confirmDelete(catName) {
-                return confirm('Êtes-vous sûr de vouloir supprimer le chat ' + catName + ' ?');
+            function confirmDelete(catName, deleteUrl) {
+                if (confirm('Êtes-vous sûr de vouloir supprimer le chat ' + catName + ' ?')) {
+                    window.location.href = deleteUrl;
+                }
             }
         </script>
     {% endblock %}

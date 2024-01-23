@@ -35,9 +35,33 @@
     margin-left: 100px;
 }
 
-.cat-search-input {
+.customer-search-input {
     width: 250px;
     height: 25px;
+}
+
+.customer-btn-delete {
+    font-size: 16px;
+    width: 150px;
+    padding: 8px;
+    text-decoration: none;
+    background-color: red;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+}
+
+.customer-btn-add {
+    font-size: 16px;
+    width: 150px;
+    padding: 8px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
 }
 
 .wrapper {
@@ -71,7 +95,6 @@
 
 .customer-table a {
     text-decoration: none;
-    color: #4CAF50;
 }
 
 .customer-table a:hover {

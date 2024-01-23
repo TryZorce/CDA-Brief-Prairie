@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le chat{{ cat.getName() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/catadd.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <h1>Modifier le chat {{ cat.getName() }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Modifier</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_cats') }}">Revenir à la liste des chats</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le rendez-vous {{ meet.getName() }}{% endblock %}
+
+{% block body %}
+    <h1>Modifier le rendez-vous {{ meet.getName() }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Modifier</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_meet') }}">Revenir à la liste des rendez-vous</a>
+{% endblock %}

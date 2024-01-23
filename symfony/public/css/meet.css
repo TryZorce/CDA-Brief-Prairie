@@ -1,7 +1,8 @@
-.header-wrapper-flex{
+.header-wrapper-flex {
     display: flex;
     justify-content: center;
 }
+
 .header-wrapper {
     display: flex;
     justify-content: space-between;
@@ -16,6 +17,106 @@
     position: absolute;
 }
 
+.search-bar {
+    font-size: 18px;
+    margin-left: 100px;
+}
+
+.meet-search-input {
+    width: 250px;
+    height: 25px;
+}
+
+.meet-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.meet-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.meet-table th, .meet-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.meet-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.meet-table td {
+    width: auto;
+}
+
+.meet-img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.meet-image {
+    width: 200px;
+    height: auto;
+}
+
+.meet-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.meet-btn {
+    font-size: 16px;
+    width: 150px;
+    padding: 8px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+.meet-btn-delete {
+    font-size: 16px;
+    width: 150px;
+    padding: 8px;
+    text-decoration: none;
+    color: #fff;
+    background-color: red;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+.meet-btn-add {
+    font-size: 16px;
+    width: 150px;
+    padding: 8px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+.add-meet-btn-wrapper {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
 .btn {
     font-size: 24px;
     width: 150px;
@@ -28,63 +129,20 @@
     text-align: center;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.customer-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.customer-table th, .customer-table td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-    width: auto;
-}
-
-.customer-table th {
-    background-color: #4CAF50;
-    color: white;
-}
-
-
-
-.btn:hover {
-    background-color: #45a049;
-}
-
-.customer-table a {
-    text-decoration: none;
-    color: #4CAF50;
-}
-
-.customer-table a:hover {
-    color: #45a049;
-}
-
 @media screen and (max-width: 600px) {
-    .customer-table {
+    .meet-table {
         width: 100%;
     }
 
-    .customer-table th, .customer-table td {
+    .meet-table th, .meet-table td {
         text-align: left;
     }
 
-    .customer-table th {
-        background-color: #4CAF50;
-        color: white;
+    .meet-img-wrapper {
+        height: 100px;
     }
 
-    .customer-table td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: right;
-        width: auto;
+    .meet-image {
+        width: 80px;
     }
 }

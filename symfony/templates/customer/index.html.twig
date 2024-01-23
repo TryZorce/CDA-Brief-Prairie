@@ -10,14 +10,14 @@
     <div class="header-wrapper-flex">
         <div class="header-wrapper">
             <h1>Liste des clients</h1>
-            <a class="btn" href="accueil">Revenir à l'accueil</a>
-            <a class="btn" href="add-customer">Ajouter un client</a>
+            <a class="btn" href="{{ path('app_accueil') }}">Revenir à l'accueil</a>
+            <a class="btn" href="{{ path('app_add_customer') }}">Ajouter un client</a>
         </div>
     </div>
 
     <div class="search-bar">
         <label for="customer-search">Rechercher par nom :</label>
-        <input type="text" id="customer-search" oninput="filterCustomers()" class="cat-search-input">
+        <input type="text" id="customer-search" oninput="filterCustomers()" class="customer-search-input">
     </div>
 
     <div class="wrapper">
@@ -37,7 +37,8 @@
                         <td class="customer-td">+33 {{ customer.phone }}</td>
                         <td class="customer-td">{{ customer.address }}</td>
                         <td class="customer-td">
-                            <a class="customer-link" href="customer/pet/{{ customer.getId() }}">Voir les animaux</a>
+                            <a class="customer-btn-add" href="{{ path('app_edit_customer', {'id': customer.id}) }}">Modifier</a>
+                            <a class="customer-btn-delete" href="{{ path('app_delete_customer', {'id': customer.id}) }}" onclick="return confirmDelete('{{ customer.name }}')">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -60,6 +61,10 @@
                         rows[i].style.display = 'none';
                     }
                 }
+            }
+
+            function confirmDelete(customerName) {
+                return confirm('Êtes-vous sûr de vouloir supprimer le client ' + customerName + ' ?');
             }
         </script>
     {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un rendez-vous
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	<h1 class="centered-text">Ajouter un rendez-vous</h1>
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button type="submit">Ajouter</button>
+	{{ form_end(form) }}
+
+	<div class="centered-text">
+		<a href="{{ path('app_meet') }}">Revenir à la liste des rendez-vous</a>
+	</div>
+
+{% endblock %}

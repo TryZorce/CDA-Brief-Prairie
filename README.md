@@ -17,7 +17,7 @@ composer install
 ```
 
 ```shell
-Modifier le copier le .env.test dans un fichier .env et modifier les valeurs
+Copier le .env.test dans un fichier .env et modifier les valeurs
 ```
 
 ```shell

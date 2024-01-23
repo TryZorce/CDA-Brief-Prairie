@@ -63,12 +63,20 @@ class CatController extends AbstractController
         ]);
     }
 
+
     #[Route('/cats/delete/{id}', name: 'app_delete_cat')]
     public function deleteCat(EntityManagerInterface $entityManager, Pet $cat): Response
     {
-        $entityManager->remove($cat);
-        $entityManager->flush();
+        $meets = $cat->getMeets();
+
+        if (!$meets->isEmpty()) {
+            $this->addFlash('error', 'Impossible de supprimer ce chat car il a des rendez-vous.');
+        } else {
+            $entityManager->remove($cat);
+            $entityManager->flush();
+        }
 
         return $this->redirectToRoute('app_cats');
     }
+
 }

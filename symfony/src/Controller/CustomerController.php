@@ -60,11 +60,18 @@ class CustomerController extends AbstractController
         ]);
     }
 
-    #[Route('/app_customer/delete/{id}', name: 'app_delete_customer')]
+    #[Route('/customers/delete/{id}', name: 'app_delete_customer')]
     public function deleteCustomer(EntityManagerInterface $entityManager, Customer $customer): Response
     {
-        $entityManager->remove($customer);
-        $entityManager->flush();
+        $hasPets = count($customer->getPets()) > 0;
+
+        if ($hasPets) {
+            $this->addFlash('error', 'Impossible de supprimer ce client car ces animaux sont toujours présents.');
+        } else {
+            $entityManager->remove($customer);
+            $entityManager->flush();
+            $this->addFlash('success', 'Client supprimé avec succès.');
+        }
 
         return $this->redirectToRoute('app_customer');
     }

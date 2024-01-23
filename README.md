@@ -2,6 +2,40 @@
 # CDA
 
 ## Brief 1 - Prairie
+### Commande à effectuer :
+
+```shell
+git Clone
+```
+
+```shell
+cd Symfony
+```
+
+```shell
+composer install
+```
+
+```shell
+Modifier le copier le .env.test dans un fichier .env et modifier les valeurs
+```
+
+```shell
+php bin/console doctrine:database:create
+```
+
+```shell
+php bin/console doctrine:migrations:migrate
+```
+
+```shell
+php bin/console doctrine:fixtures:load
+```
+
+```shell
+symfony server:start
+```
+
 ## Contexte
 
 En tant que propriétaire responsable d'un animal de compagnie, il est crucial de maintenir à jour les vaccinations et les contrôles de santé de notre compagnon à quatre pattes. Cependant, avec le rythme effréné de la vie quotidienne, il peut être facile d'oublier les dates importantes, comme celle du rappel de vaccination

@@ -30,6 +30,9 @@ class Customer
     #[ORM\OneToMany(mappedBy: 'Customer', targetEntity: Pet::class)]
     private Collection $pets;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Email = null;
+
     public function __construct()
     {
         $this->pets = new ArrayCollection();
@@ -114,6 +117,18 @@ class Customer
                 $pet->setCustomer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->Email;
+    }
+
+    public function setEmail(string $Email): static
+    {
+        $this->Email = $Email;
 
         return $this;
     }

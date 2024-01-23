@@ -69,6 +69,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+
 }
 
 .cat-btn {
@@ -81,6 +82,25 @@
     border-radius: 5px;
     display: inline-block;
     text-align: center;
+}
+
+.cat-btn-delete {
+    font-size: 16px;
+    width: 150px;
+    padding: 8px;
+    text-decoration: none;
+    color: #fff;
+    background-color: red;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+.cat-btn:hover{
+background-color:#3b8a3e ;
+}
+.cat-btn-delete:hover{
+    background-color: darkred;
 }
 
 .add-cat-btn-wrapper {
@@ -101,6 +121,10 @@
     border-radius: 5px;
     display: inline-block;
     text-align: center;
+}
+
+.btn:hover{
+    background-color:#3b8a3e;
 }
 
 @media screen and (max-width: 600px) {

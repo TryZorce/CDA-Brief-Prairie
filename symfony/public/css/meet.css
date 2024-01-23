@@ -85,6 +85,18 @@
     text-align: center;
 }
 
+.btn:hover{
+    background-color: #3b8a3e;;
+}
+
+.meet-btn-add:hover{
+    background-color: #3b8a3e;;
+}
+
+.meet-btn-delete:hover{
+    background-color: darkred;
+}
+
 .meet-btn-delete {
     font-size: 16px;
     width: 150px;

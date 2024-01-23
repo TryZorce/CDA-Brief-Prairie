@@ -30,6 +30,9 @@
     text-align: center;
 }
 
+.btn:hover{
+    background-color: #3b8a3e;
+}
 .search-bar {
     font-size: 18px;
     margin-left: 100px;
@@ -63,16 +66,19 @@
     text-align: center;
     color: #fff;
 }
-
+.customer-btn-add:hover{
+    background-color: #3b8a3e;
+}
 .wrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .customer-table {
+    width: 100%;
     border-collapse: collapse;
-    width: 80%;
     margin-top: 20px;
 }
 
@@ -89,16 +95,8 @@
     color: white;
 }
 
-.btn:hover {
-    background-color: #45a049;
-}
-
 .customer-table a {
     text-decoration: none;
-}
-
-.customer-table a:hover {
-    color: #45a049;
 }
 
 @media screen and (max-width: 600px) {

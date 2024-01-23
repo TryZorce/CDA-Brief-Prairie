@@ -28,7 +28,6 @@
             <thead>
                 <tr>
                     <th>Nom</th>
-                    <th>Image</th>
                     <th>Propriétaire</th>
                     <th>Sexe</th>
                     <th>Date de naissance</th>
@@ -40,11 +39,6 @@
                 {% for cat in cats %}
                     <tr class="cat-row">
                         <td class="cat-name">{{ cat.getName() }}</td>
-                        <td>
-                            <div class="cat-img-wrapper">
-                                <img src="{{ cat.getImage() }}" class="cat-image">
-                            </div>
-                        </td>
                         <td>
                             {% if cat.getCustomer() is not null %}
                                 {{ cat.getCustomer().getName() }}

@@ -96,6 +96,13 @@
     text-align: center;
 }
 
+.cat-btn:hover{
+background-color:#3b8a3e ;
+}
+.cat-btn-delete:hover{
+    background-color: darkred;
+}
+
 .add-cat-btn-wrapper {
     height: 60px;
     display: flex;
@@ -114,6 +121,10 @@
     border-radius: 5px;
     display: inline-block;
     text-align: center;
+}
+
+.btn:hover{
+    background-color:#3b8a3e;
 }
 
 @media screen and (max-width: 600px) {

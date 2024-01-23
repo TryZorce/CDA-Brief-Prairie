@@ -2,13 +2,20 @@
 
 {% block title %}Modifier le rendez-vous {{ meet.getName() }}{% endblock %}
 
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}"/>
+{% endblock %}
+
 {% block body %}
-    <h1>Modifier le rendez-vous {{ meet.getName() }}</h1>
+    <h1 class="centered-text">Modifier le rendez-vous {{ meet.getName() }}</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <button type="submit">Modifier</button>
     {{ form_end(form) }}
 
+ <div class="centered-text">
     <a href="{{ path('app_meet') }}">Revenir à la liste des rendez-vous</a>
+    </div>
 {% endblock %}

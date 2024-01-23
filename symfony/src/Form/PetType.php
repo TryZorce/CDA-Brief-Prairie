@@ -9,7 +9,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityRepository;
@@ -21,11 +20,6 @@ class PetType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom du chat',
-            ])
-            ->add('image', FileType::class, [
-                'label' => 'Image du chat',
-                'mapped' => false,
-                'required' => false,
             ])
             ->add('sex', ChoiceType::class, [
                 'label' => 'Sexe',
@@ -48,7 +42,7 @@ class PetType extends AbstractType
                     return $er->createQueryBuilder('c')
                         ->orderBy('c.id', 'ASC');
                 },
-                'choice_label' => 'name', // Use the 'name' field as the label
+                'choice_label' => 'name',
                 'label' => 'Propriétaire',
             ]);
     }

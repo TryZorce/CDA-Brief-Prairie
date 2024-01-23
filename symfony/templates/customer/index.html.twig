@@ -1,71 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gérer les clients{% endblock %}
+{% block title %}Gérer les clients
+{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/customer.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/customer.css') }}"/>
 {% endblock %}
 
 {% block body %}
-    <div class="header-wrapper-flex">
-        <div class="header-wrapper">
-            <h1>Liste des clients</h1>
-            <a class="btn" href="{{ path('app_accueil') }}">Revenir à l'accueil</a>
-            <a class="btn" href="{{ path('app_add_customer') }}">Ajouter un client</a>
-        </div>
-    </div>
+  <img src="img/logo.png" class="logo">
+	<div class="header-wrapper-flex">
+		<div class="header-wrapper">
+			<h1>Liste des clients</h1>
+			<a class="btn" href="{{ path('app_accueil') }}">Revenir à l'accueil</a>
+			<a class="btn" href="{{ path('app_add_customer') }}">Ajouter un client</a>
+		</div>
+	</div>
 
-    <div class="search-bar">
-        <label for="customer-search">Rechercher par nom :</label>
-        <input type="text" id="customer-search" oninput="filterCustomers()" class="customer-search-input">
-    </div>
+	<div class="search-bar">
+		<label for="customer-search">Rechercher par nom :</label>
+		<input type="text" id="customer-search" oninput="filterCustomers()" class="customer-search-input">
+	</div>
 
-    <div class="wrapper">
-        <table class="customer-table">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Téléphone</th>
-                    <th>Adresse</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for customer in customers %}
-                    <tr class="customer-row">
-                        <td class="customer-name">{{ customer.name }}</td>
-                        <td class="customer-td">+33 {{ customer.phone }}</td>
-                        <td class="customer-td">{{ customer.address }}</td>
-                        <td class="customer-td">
-                            <a class="customer-btn-add" href="{{ path('app_edit_customer', {'id': customer.id}) }}">Modifier</a>
-                            <a class="customer-btn-delete" href="{{ path('app_delete_customer', {'id': customer.id}) }}" onclick="return confirmDelete('{{ customer.name }}')">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+	<div class="wrapper">
+		<table class="customer-table">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Téléphone</th>
+					<th>Email</th>
+					<th>Adresse</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for customer in customers %}
+					<tr class="customer-row">
+						<td class="customer-name">{{ customer.name }}</td>
+						<td class="customer-td">+33
+							{{ customer.phone }}</td>
+						<td class="customer-td">{{ customer.email }}</td>
+						<td class="customer-td">{{ customer.address }}</td>
+						<td class="customer-td">
+							<a class="customer-btn-add" href="{{ path('app_edit_customer', {'id': customer.id}) }}">Modifier</a>
+							<a class="customer-btn-delete" href="{{ path('app_delete_customer', {'id': customer.id}) }}" onclick="return confirmDelete('{{ customer.name }}')">Supprimer</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 
-    {% block javascripts %}
-        <script>
-            function filterCustomers() {
-                var input = document.getElementById('customer-search').value.toLowerCase();
-                var rows = document.getElementsByClassName('customer-row');
+	{% block javascripts %}
+		<script>
+			function filterCustomers() {
+var input = document.getElementById('customer-search').value.toLowerCase();
+var rows = document.getElementsByClassName('customer-row');
 
-                for (var i = 0; i < rows.length; i++) {
-                    var customerName = rows[i].getElementsByClassName('customer-name')[0].innerText.toLowerCase();
-                    
-                    if (customerName.includes(input)) {
-                        rows[i].style.display = '';
-                    } else {
-                        rows[i].style.display = 'none';
-                    }
-                }
-            }
+for (var i = 0; i < rows.length; i++) {
+var customerName = rows[i].getElementsByClassName('customer-name')[0].innerText.toLowerCase();
 
-            function confirmDelete(customerName) {
-                return confirm('Êtes-vous sûr de vouloir supprimer le client ' + customerName + ' ?');
-            }
-        </script>
-    {% endblock %}
+if (customerName.includes(input)) {
+rows[i].style.display = '';
+} else {
+rows[i].style.display = 'none';
+}
+}
+}
+
+function confirmDelete(customerName) {
+return confirm('Êtes-vous sûr de vouloir supprimer le client ' + customerName + ' ?');
+}
+		</script>
+	{% endblock %}
 {% endblock %}

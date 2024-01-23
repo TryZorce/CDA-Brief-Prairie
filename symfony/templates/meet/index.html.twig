@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body %}
+  <img src="img/logo.png" class="logo">
     <div class="header-wrapper-flex">
         <div class="header-wrapper">
             <h1>Liste des rendez-vous</h1>
@@ -16,7 +17,7 @@
     </div>
 
     <div class="search-bar">
-        <label for="meet-search">Rechercher par nom :</label>
+        <label for="meet-search">Nom du rendez-vous / Nom du chat :</label>
         <input type="text" id="meet-search" oninput="filterMeets()" class="meet-search-input">
     </div>
 
@@ -55,25 +56,26 @@
     </div>
 
     {% block javascripts %}
-        <script>
-            function filterMeets() {
-                var input = document.getElementById('meet-search').value.toLowerCase();
-                var rows = document.getElementsByClassName('meet-row');
+    <script>
+        function filterMeets() {
+            var input = document.getElementById('meet-search').value.toLowerCase();
+            var rows = document.getElementsByClassName('meet-row');
 
-                for (var i = 0; i < rows.length; i++) {
-                    var meetName = rows[i].getElementsByClassName('meet-name')[0].innerText.toLowerCase();
-                    
-                    if (meetName.includes(input)) {
-                        rows[i].style.display = '';
-                    } else {
-                        rows[i].style.display = 'none';
-                    }
+            for (var i = 0; i < rows.length; i++) {
+                var meetName = rows[i].getElementsByClassName('meet-name')[0].innerText.toLowerCase();
+                var animalName = rows[i].getElementsByClassName('meet-animal')[0].innerText.toLowerCase();
+
+                if (meetName.includes(input) || animalName.includes(input)) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
                 }
             }
+        }
 
-            function confirmDelete(meetName) {
-                return confirm('Êtes-vous sûr de vouloir supprimer le rendez-vous ' + meetName + ' ?');
-            }
-        </script>
-    {% endblock %}
+        function confirmDelete(meetName) {
+            return confirm('Êtes-vous sûr de vouloir supprimer le rendez-vous ' + meetName + ' ?');
+        }
+    </script>
+{% endblock %}
 {% endblock %}

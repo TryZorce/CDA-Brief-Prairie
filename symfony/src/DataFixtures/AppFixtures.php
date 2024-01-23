@@ -51,6 +51,14 @@ class AppFixtures extends Fixture
         $cat3->setCustomer($customer2);
         $manager->persist($cat3);
 
+        $cat4 = new Pet();
+        $cat4->setName('Garfield');
+        $cat4->setSex('Male');
+        $cat4->setBirth(new \DateTime('2019-01-01'));
+        $cat4->setRace('Maine Coon');
+        $cat4->setCustomer($customer2);
+        $manager->persist($cat4);
+
         // Create meets
         $meet1 = new Meet();
         $meet1->setName('Checkup');
